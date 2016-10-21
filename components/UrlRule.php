@@ -1,4 +1,6 @@
-<?php namespace UrlAlias\components;
+<?php
+
+namespace robot72\modules\urlalias\components;
 
 use Yii;
 use yii\web\UrlRule as BaseUrlRule;
@@ -16,9 +18,11 @@ class UrlRule extends BaseUrlRule
     }
 
     /**
+     *
      * @param \yii\web\UrlManager $manager
      * @param string $route
      * @param array $params
+     *
      * @return bool|mixed
      */
     public function createUrl($manager, $route, $params)
@@ -41,8 +45,11 @@ class UrlRule extends BaseUrlRule
     }
 
     /**
+     *
+     *
      * @param \yii\web\UrlManager $manager
      * @param \yii\web\Request $request
+     *
      * @return array|bool
      */
     public function parseRequest($manager, $request)
@@ -66,7 +73,10 @@ class UrlRule extends BaseUrlRule
     }
 
     /**
+     *
+     *
      * @param \yii\web\Request $request
+     * 
      * @return string
      */
     public function getRouteFromSlug($request)

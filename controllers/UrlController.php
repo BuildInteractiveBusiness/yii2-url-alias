@@ -1,9 +1,11 @@
-<?php namespace UrlAlias\controllers;
+<?php
 
-use UrlAlias\models\UrlRule;
+namespace robot72\modules\urlalias\controllers;
+
 use Yii;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
+use robot72\modules\urlalias\models\UrlRule;
 
 class UrlController extends Controller
 {

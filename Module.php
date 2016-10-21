@@ -1,4 +1,6 @@
-<?php namespace UrlAlias;
+<?php
+
+namespace robot72\modules\urlalias;
 
 use Yii;
 use yii\base\Module as BaseModule;

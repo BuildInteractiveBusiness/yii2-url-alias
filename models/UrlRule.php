@@ -1,4 +1,6 @@
-<?php namespace UrlAlias\models;
+<?php
+
+namespace robot72\modules\urlalias\models;
 
 use yii\db\ActiveRecord;
 
