@@ -2,12 +2,16 @@
 
 use yii\db\Schema;
 use yii\db\Migration;
+use robot72\components\helpers\MigrationHelper;
 
-class m141025_074801_url_rule extends Migration
+class m141025_074801_url_rule extends MigrationHelper
 {
+    public $tableName = '{{url_rule}}';
+
     public function up()
     {
-        $this->createTable('url_rule', [
+        $this->setTableOptions();
+        $this->createTable($this->tableName, [
             'id'            => 'pk',
             'slug'          => Schema::TYPE_STRING  . ' NOT NULL',
             'route'         => Schema::TYPE_STRING  . ' NOT NULL',

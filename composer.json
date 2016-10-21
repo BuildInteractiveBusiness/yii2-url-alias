@@ -17,7 +17,7 @@
     },
     "autoload"   : {
         "psr-4": {
-            "robot72\\modules\\urlalias": ""
+            "robot72\\modules\\urlalias\\": ""
         }
     }
 }
