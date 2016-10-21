@@ -2,5 +2,4 @@
 
 return [
     'connectionId' => 'db',
-
 ];

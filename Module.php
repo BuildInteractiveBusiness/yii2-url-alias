@@ -31,6 +31,11 @@ class Module extends BaseModule implements BootstrapInterface
      */
     public $indexSlugMap = ['index', 'site/index'];
 
+    /**
+     * Route for enter admin part
+     *
+     * @var string
+     */
     public $urlAliasAdminName = 'admin/rule';
 
     public function init() {

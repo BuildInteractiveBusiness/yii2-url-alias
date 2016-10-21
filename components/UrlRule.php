@@ -33,7 +33,7 @@ class UrlRule extends BaseUrlRule
                 $dbSlugName = $dbRoute->getAttribute('slug');
             }
 
-        }catch (\yii\db\Exception $e) {
+        } catch (\yii\db\Exception $e) {
 
         }
 
@@ -58,7 +58,7 @@ class UrlRule extends BaseUrlRule
                     unserialize($route->getAttribute('params'))
                 ];
             }
-        }catch (\yii\db\Exception $e) {
+        } catch (\yii\db\Exception $e) {
 
         }
 
