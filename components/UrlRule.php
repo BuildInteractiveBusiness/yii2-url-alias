@@ -1,12 +1,18 @@
-<?php
+<?php 
 
 namespace robot72\modules\urlalias\components;
 
 use Yii;
 use yii\web\UrlRule as BaseUrlRule;
+use robot72\modules\urlalias\models\UrlRule as UrlRuleModel;
 
+/**
+ * Class assign url rule
+ */
 class UrlRule extends BaseUrlRule
 {
+    public $connectionID;
+
     /**
      * @inheritdoc
      */
@@ -16,13 +22,12 @@ class UrlRule extends BaseUrlRule
             $this->name = __CLASS__;
         }
     }
+    
 
     /**
-     *
      * @param \yii\web\UrlManager $manager
      * @param string $route
      * @param array $params
-     *
      * @return bool|mixed
      */
     public function createUrl($manager, $route, $params)
@@ -45,11 +50,8 @@ class UrlRule extends BaseUrlRule
     }
 
     /**
-     *
-     *
      * @param \yii\web\UrlManager $manager
      * @param \yii\web\Request $request
-     *
      * @return array|bool
      */
     public function parseRequest($manager, $request)
@@ -57,7 +59,7 @@ class UrlRule extends BaseUrlRule
 
         try {
             $_slug = $this->getRouteFromSlug($request);
-            $route  = \UrlAlias\models\UrlRule::getRouteBySlug($_slug);
+            $route  = UrlRuleModel::getRouteBySlug($_slug);
 
             if (!is_null($route)) {
                 return [
@@ -73,10 +75,7 @@ class UrlRule extends BaseUrlRule
     }
 
     /**
-     *
-     *
      * @param \yii\web\Request $request
-     * 
      * @return string
      */
     public function getRouteFromSlug($request)
@@ -101,6 +100,8 @@ class UrlRule extends BaseUrlRule
 
 
     /**
+     * Get a route from cached
+     *
      * @param $route
      * @param $params
      * @return string
@@ -114,8 +115,11 @@ class UrlRule extends BaseUrlRule
     }
 
     /**
+     * Get a route from cache or write cache then read
+     *
      * @param $_route
      * @param $_params
+     * 
      * @return false|\yii\db\ActiveRecord
      */
     private function getRouteFromCacheOrWriteCacheThenRead($_route, $_params)
@@ -126,7 +130,7 @@ class UrlRule extends BaseUrlRule
         $dbRoute = Yii::$app->cache->get($_route, $_route);
 
         if ($dbRoute == false) {
-            $dbRoute = \UrlAlias\models\UrlRule::getRoute($_route, $_params);
+            $dbRoute = UrlRuleModel::getRoute($_route, $_params);
 
             Yii::$app->cache->set(
                 $this->getCachedRoute($_route, $_params),
