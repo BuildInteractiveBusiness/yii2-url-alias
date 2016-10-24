@@ -6,7 +6,7 @@ use robot72\components\helpers\MigrationHelper;
 
 class m141025_074801_url_rule extends MigrationHelper
 {
-    public $tableName = '{{url_rule}}';
+    public $tableName = '{{%url_rule}}';
 
     public function up()
     {
@@ -24,6 +24,6 @@ class m141025_074801_url_rule extends MigrationHelper
 
     public function down()
     {
-        $this->dropTable('url_rule');
+        $this->dropTable($this->tableName);
     }
 }
