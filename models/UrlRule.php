@@ -4,6 +4,11 @@ namespace robot72\modules\urlalias\models;
 
 use yii\db\ActiveRecord;
 
+/**
+ * Data model storage slug and route
+ *
+ * @author Robert Kuznetsov
+ */
 class UrlRule extends ActiveRecord
 {
     const STATUS_ACTIVE  = 1;

@@ -1,5 +1,0 @@
-<?php
-
-return [
-    'connectionId' => 'db',
-];
