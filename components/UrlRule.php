@@ -122,7 +122,7 @@ class UrlRule extends BaseUrlRule
      * 
      * @return false|\yii\db\ActiveRecord
      */
-    private function getRouteFromCacheOrWriteCacheThenRead($_route, $_params)
+    public function getRouteFromCacheOrWriteCacheThenRead($_route, $_params)
     {
 
         unset($_params['/' . $_route]);

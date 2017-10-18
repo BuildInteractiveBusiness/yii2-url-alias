@@ -3,7 +3,14 @@
 namespace robot72\modules\urlalias\models;
 
 use yii\db\ActiveRecord;
+use yii\helpers\Url;
+use robot72\modules\sitemap\behaviors\SitemapBehavior;
 
+/**
+ * Data model storage slug and route
+ *
+ * @author Robert Kuznetsov
+ */
 class UrlRule extends ActiveRecord
 {
     const STATUS_ACTIVE  = 1;
@@ -46,6 +53,28 @@ class UrlRule extends ActiveRecord
         ];
     }
 
+    public function behaviors()
+    {
+        return [
+            'sitemap' => [
+                'class' => SitemapBehavior::className(),
+                'scope' => function ($model) {
+                    /** @var \yii\db\ActiveQuery $model */
+                    $model->select(['slug']);
+                },
+                'dataClosure' => function ($model) {
+                    /** @var self $model */
+                    return [
+                        'loc' => Url::to($model->slug, true),
+                        // 'lastmod' => strtotime($model->lastmod),
+                        'changefreq' => SitemapBehavior::CHANGEFREQ_DAILY,
+                        'priority' => 0.8
+                    ];
+                }
+            ],
+        ];
+    }
+
     public static function getRoute($route, $params = array(), $status = self::STATUS_ACTIVE)
     {
         return self::getDb()->cache(function() use ($route, $params, $status) {
@@ -60,7 +89,8 @@ class UrlRule extends ActiveRecord
         });
     }
 
-    public static function getRouteBySlugWithParams($slug, $params = array(), $status = self::STATUS_ACTIVE) {
+    public static function getRouteBySlugWithParams($slug, $params = array(), $status = self::STATUS_ACTIVE)
+    {
         return self::getDb()->cache(function() use ($slug, $params, $status) {
             return self::find()->where(
                 'slug = :SLUG AND params = :PARAMS AND status = :STATUS',
