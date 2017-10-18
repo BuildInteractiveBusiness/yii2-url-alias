@@ -6,6 +6,9 @@ use Yii;
 use yii\base\Module as BaseModule;
 use yii\base\BootstrapInterface;
 
+/**
+ * Module for UrlAlias
+ */
 class Module extends BaseModule implements BootstrapInterface
 {
     /**
@@ -38,12 +41,14 @@ class Module extends BaseModule implements BootstrapInterface
      *
      * @var string
      */
-    public $urlAliasAdminName = 'admin/rule';
+    public $urlAliasAdminName = 'admin/urlalias';
 
-    public function init() {
-        parent::init();
-        Yii::configure($this, require $this->configPath);
-    }
+    /**
+     * Alias of the view for layout for backend side
+     *
+     * @var string
+     */
+    public $backendLayout = '@vendor/robot72/yii2-url-alias/views/layouts/main';
 
     /**
      * @inheritdoc
