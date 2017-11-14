@@ -1,5 +1,5 @@
 {
-    "name": "buildinteractivebusiness/yii2-url-alias",
+    "name": "malankateam/yii2-url-alias",
     "type": "yii2-extension",
     "description": "Yii2 url alias",
     "keywords": ["yii2", "slug"],
